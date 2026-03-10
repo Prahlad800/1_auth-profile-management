@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+import express from "express"
 
 export const connectDB = ()=>{
     const url = process.env.DATABABE_URL
