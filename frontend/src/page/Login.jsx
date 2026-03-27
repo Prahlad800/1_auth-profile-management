@@ -6,39 +6,42 @@ import { handleError, handleSuccess } from "../utils/utils.js";
 import "../utils/utils.js";
 import axios from "axios";
 
-
 function Login() {
   const navigate = useNavigate();
-  const [userData, setUserData] = useState({
-    name: "",
+  const [userLoginData, setUserLoginData] = useState({
     email: "",
-    DOB: "",
-    number: "",
+
     password: "",
   });
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    const copyData = { ...userData, [name]: value };
+    const copyData = { ...userLoginData, [name]: value };
 
-    setUserData(copyData);
+    setUserLoginData(copyData);
   };
-  const handleSignup = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log(userData);
-    const { name, email, password, DOB, number } = userData;
-    if (!name || !email || !password || !DOB || !number) {
+    // console.log(userData);
+    const { email, password } = userLoginData;
+    if (!email || !password) {
       return handleError("All fields required");
     }
     try {
-      const res = await axios.post("/api/auth/signup", userData);
+      const res = await axios.post("/api/auth/login", userLoginData);
 
-      handleSuccess(res.data.message);
       // console.log(res.data);
+      const { jwtToken, name } = res.data;
       if (res.data.success) {
+        handleSuccess(res.data.message);
+        
+
+        localStorage.setItem("token", jwtToken);
+        localStorage.setItem("loggedInUser", name);
         setTimeout(() => {
-          navigate("/login");
+          navigate("/home");
         }, 1000);
+        console.log(localStorage.getItem("token"));
       }
     } catch (err) {
       // catch (err){
@@ -61,9 +64,8 @@ function Login() {
 
   return (
     <div className="h1">
-      <form onSubmit={handleSignup}>
+      <form onSubmit={handleLogin}>
         <h1>Login</h1>
-       
 
         <label htmlFor="email">Email</label>
         <input
@@ -71,11 +73,9 @@ function Login() {
           type="email"
           name="email"
           placeholder="Enter your Email..."
-          value={userData.email}
+          value={userLoginData.email}
           onChange={handleChange}
         />
-
-        
 
         <label htmlFor="password">Password</label>
         <input
@@ -83,12 +83,14 @@ function Login() {
           type="password"
           name="password"
           placeholder="Enter your password..."
-          value={userData.password}
+          value={userLoginData.password}
           onChange={handleChange}
         />
         <button type="submit">Signup</button>
-        <span>Creact account? <Link to="/signup">Signup</Link></span>
-        
+        <span>
+          Does't have a account? <Link to="/signup">Signup</Link>
+        </span>
+        {/* {Creact a account?} */}
       </form>
       <ToastContainer className="toast-custom" />
     </div>
