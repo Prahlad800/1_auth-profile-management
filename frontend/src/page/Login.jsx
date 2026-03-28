@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import "./signup.css";
-import { useState } from "react";
 import { handleError, handleSuccess } from "../utils/utils.js";
+import "./login.css";
+import { useState } from "react";
+
 import "../utils/utils.js";
 import axios from "axios";
 
@@ -62,13 +63,15 @@ function Login() {
     }
   };
 
-  return (
-    <div className="h1">
-      <form onSubmit={handleLogin}>
-        <h1>Login</h1>
+ return (
+  <div className="login">
+    <div className="login__container">
+      <form className="login__form" onSubmit={handleLogin}>
+        <h1 className="login__title">Login</h1>
 
-        <label htmlFor="email">Email</label>
+        <label className="login__label" htmlFor="email">Email</label>
         <input
+          className="login__input"
           id="email"
           type="email"
           name="email"
@@ -77,8 +80,9 @@ function Login() {
           onChange={handleChange}
         />
 
-        <label htmlFor="password">Password</label>
+        <label className="login__label" htmlFor="password">Password</label>
         <input
+          className="login__input"
           id="password"
           type="password"
           name="password"
@@ -86,15 +90,21 @@ function Login() {
           value={userLoginData.password}
           onChange={handleChange}
         />
-        <button type="submit">Signup</button>
-        <span>
-          Does't have a account? <Link to="/signup">Signup</Link>
+
+        <button className="login__button" type="submit">
+          Login
+        </button>
+
+        <span className="login__footer">
+          Doesn't have an account?{" "}
+          <Link className="login__link" to="/signup">Signup</Link>
         </span>
-        {/* {Creact a account?} */}
       </form>
+
       <ToastContainer className="toast-custom" />
     </div>
-  );
+  </div>
+);
 }
 
 export default Login;

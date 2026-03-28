@@ -60,63 +60,72 @@ function Signup() {
   };
 
   return (
-    <div className="h1">
-      <form onSubmit={handleSignup}>
-        <h1>Signup</h1>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          placeholder="Enter your name..."
-          value={userData.name}
-          onChange={handleChange}
-        />
+  <div className="signup">
+  <form className="signup__form" onSubmit={handleSignup}>
+    <h1 className="signup__title">Signup</h1>
 
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          placeholder="Enter your Email..."
-          value={userData.email}
-          onChange={handleChange}
-        />
+    <label className="signup__label" htmlFor="name">Name</label>
+    <input
+      className="signup__input"
+      id="name"
+      type="text"
+      name="name"
+      placeholder="Enter your name..."
+      value={userData.name}
+      onChange={handleChange}
+    />
 
-        <label htmlFor="DOB">Date of Birth</label>
-        <input
-          id="DOB"
-          type="date"
-          name="DOB"
-          value={userData.DOB}
-          onChange={handleChange}
-        />
+    <label className="signup__label" htmlFor="email">Email</label>
+    <input
+      className="signup__input"
+      id="email"
+      type="email"
+      name="email"
+      placeholder="Enter your Email..."
+      value={userData.email}
+      onChange={handleChange}
+    />
 
-        <label htmlFor="number">Phone Number</label>
-        <input
-          id="number"
-          type="text"
-          name="number"
-          placeholder="Enter your number..."
-          value={userData.number}
-          onChange={handleChange}
-        />
+    <label className="signup__label" htmlFor="DOB">Date of Birth</label>
+    <input
+      className="signup__input"
+      id="DOB"
+      type="date"
+      name="DOB"
+      value={userData.DOB}
+      onChange={handleChange}
+    />
 
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="Enter your password..."
-          value={userData.password}
-          onChange={handleChange}
-        />
-        <button type="submit">Signup</button>
-        <span>Alredy have an account?</span>
-        <Link to="/login">Login</Link>
-      </form>
-      <ToastContainer className="toast-custom" />
-    </div>
+    <label className="signup__label" htmlFor="number">Phone Number</label>
+    <input
+      className="signup__input"
+      id="number"
+      type="text"
+      name="number"
+      placeholder="Enter your number..."
+      value={userData.number}
+      onChange={handleChange}
+    />
+
+    <label className="signup__label" htmlFor="password">Password</label>
+    <input
+      className="signup__input"
+      id="password"
+      type="password"
+      name="password"
+      placeholder="Enter your password..."
+      value={userData.password}
+      onChange={handleChange}
+    />
+
+    <button className="signup__button" type="submit">Signup</button>
+
+    <span className="signup__text">Already have an account?</span>
+    <Link className="signup__link" to="/login">Login</Link>
+  </form>
+
+  <ToastContainer className="signup__toast" />
+</div>
   );
 }
 
