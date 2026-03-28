@@ -6,6 +6,7 @@ import { handleSuccess, handleError } from "../utils/utils";
 import "./home.css";
 
 
+
 function Home() {
   const [loggedUser, setLoggedUser] = useState("");
   const [products, setProducts] = useState([]);
