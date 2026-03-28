@@ -25,7 +25,7 @@ function Signup() {
   };
   const handleSignup = async (e) => {
     e.preventDefault();
-    console.log(userData);
+    // console.log(userData);
     const { name, email, password, DOB, number } = userData;
     if (!name || !email || !password || !DOB || !number) {
       return handleError("All fields required");
