@@ -43,14 +43,14 @@ function Login() {
         setTimeout(() => {
           navigate("/home");
         }, 1000);
-        console.log(localStorage.getItem("token"));
+        // console.log(localStorage.getItem("token"));
       }
     } catch (err) {
       // catch (err){
       //   console.log(err.response?.data); // 🔥 real error
       //   handleError(err.response?.data?.message || "Something went wrong")
       // }
-      console.log("FULL ERROR 👉", err.response?.data);
+      // console.log("FULL ERROR 👉", err.response?.data);
 
       const backendError = err.response?.data;
 
