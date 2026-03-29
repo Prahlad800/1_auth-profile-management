@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 
 app.get("/",(req,res)=>{
-    res.send("hello I am good")
+    res.send("hello I am sarvar")
 })
 
 app.use("/api/auth",authrouter)
