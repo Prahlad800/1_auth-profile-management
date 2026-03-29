@@ -15,6 +15,23 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+app.get("/api/test", async (req, res) => {
+  try {
+    res.json({
+      success: true,
+      message: "API working 🚀",
+      data: {
+        name: "Prahlad",
+        work: "Web Developer"
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Something went wrong ❌"
+    });
+  }
+});
 
 app.get("/",(req,res)=>{
     res.send("hello I am sarvar")
