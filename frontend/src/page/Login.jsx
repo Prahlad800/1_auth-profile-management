@@ -30,7 +30,7 @@ function Login() {
       return handleError("All fields required");
     }
     try {
-      const res = await axios.post("/api/auth/login", userLoginData);
+      const res = await axios.post(`/api/auth/login`, userLoginData);
 
       // console.log(res.data);
       const { jwtToken, name } = res.data;
