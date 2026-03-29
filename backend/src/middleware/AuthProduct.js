@@ -1,6 +1,11 @@
 import jwt from "jsonwebtoken"
 export const authProduct = (req, res, next) => {
-     const auth = req.cookies.token; 
+     // Extract token from Authorization header
+     const authHeader = req.headers.authorization;
+     const auth = authHeader && authHeader.startsWith("Bearer ") 
+         ? authHeader.slice(7) // Remove "Bearer " prefix
+         : req.cookies.token; // Fallback to cookies
+    
     if (!auth) {
         return res.status(401).json({
             message: "Unauthorized, JWT token is required"

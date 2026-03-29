@@ -4,7 +4,7 @@ import Home from './page/Home'
 import Login from './page/Login'
 import Signup from './page/Signup'
 import { useState } from 'react'
-// import RefreshHandler from './utils/RefreshHandler'
+import RefreshHandler from './utils/RefreshHandler'
 
 const PrivateRoute = ({ children, isAuth }) => {
   return isAuth ? children : <Navigate to="/login" replace />
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-      {/* <RefreshHandler setIsAuth={setIsAuth} /> */}
+      <RefreshHandler setIsAuth={setIsAuth} /> 
 
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />

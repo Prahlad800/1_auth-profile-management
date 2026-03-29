@@ -12,15 +12,19 @@ function Home() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
+    useEffect(() => {
+        setLoggedUser(localStorage.getItem('loggedInUser'))
+    }, [])
+
 
 
   const fetchProducts = async () => {
     try {
-      const token = localStorage.getItem("token");
+       const token = localStorage.getItem("token");
 
-      const res = await axios.get(`https://auth-management-kzab.onrender.com/api/pro/product`, {
+      const res = await axios.get("https://auth-management-kzab.onrender.com/api/pro/product", {
         headers: {
-          Authorization: `Bearer ${token}`,
+         Authorization: `Bearer ${token}`, // 🔥 FIX
         },
       });
       console.log("TOKEN:", localStorage.getItem("token"));
@@ -29,17 +33,16 @@ function Home() {
         setProducts(res.data.products);
       }
     } catch (err) {
-      handleError("Unauthorized or error fetching products");
-      navigate("/login");
+      handleError(err);
     }
   };
 
     useEffect(() => {
-    setLoggedUser(localStorage.getItem("loggedInUser"));
+    
     fetchProducts();
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = (e) => {
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
     handleSuccess("User logged out");
