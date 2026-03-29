@@ -30,15 +30,15 @@ function Login() {
       return handleError("All fields required");
     }
     try {
-      const res = await axios.post(`/api/auth/login`, userLoginData);
+      const res = await axios.post(`https://auth-management-kzab.onrender.com/api/auth/login`, userLoginData);
 
       // console.log(res.data);
-      const { jwtToken, name } = res.data;
+      const {  name } = res.data;
       if (res.data.success) {
         handleSuccess(res.data.message);
         
 
-        localStorage.setItem("token", jwtToken);
+       localStorage.setItem("token", res.data.jwtToken);
         localStorage.setItem("loggedInUser", name);
         setTimeout(() => {
           navigate("/home");

@@ -32,7 +32,7 @@ function Signup() {
       return handleError("All fields required");
     }
     try {
-      const res = await axios.post(`/api/auth/signup`, userData);
+      const res = await axios.post(`https://auth-management-kzab.onrender.com/api/auth/signup`, userData);
 
       handleSuccess(res.data.message);
       // console.log(res.data);

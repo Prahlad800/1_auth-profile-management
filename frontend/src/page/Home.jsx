@@ -12,16 +12,13 @@ function Home() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setLoggedUser(localStorage.getItem("loggedInUser"));
-    fetchProducts();
-  }, []);
+
 
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get(`/api/pro/product`, {
+      const res = await axios.get(`https://auth-management-kzab.onrender.com/api/pro/product`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -35,6 +32,11 @@ function Home() {
       navigate("/login");
     }
   };
+
+    useEffect(() => {
+    setLoggedUser(localStorage.getItem("loggedInUser"));
+    fetchProducts();
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
