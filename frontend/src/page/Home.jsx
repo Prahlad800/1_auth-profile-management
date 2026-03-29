@@ -21,7 +21,7 @@ function Home() {
     try {
       const token = localStorage.getItem("token");
 
-      const res = await axios.get("/api/pro/product", {
+      const res = await axios.get(`/api/pro/product`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
