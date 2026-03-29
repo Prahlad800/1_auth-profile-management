@@ -1,10 +1,10 @@
 import express from "express"
 import dotenv from "dotenv"
-import app from "./app.js"
+import app from "./src/app.js"
 
 
 import mongoose from "mongoose"
-import { connectDB } from "./db/db.js"
+import { connectDB } from "./src/db/db.js"
 
 dotenv.config()
 const port = process.env.PORT
