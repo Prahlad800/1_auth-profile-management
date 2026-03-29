@@ -27,7 +27,7 @@ function Home() {
          Authorization: `Bearer ${token}`, // 🔥 FIX
         },
       });
-      console.log("TOKEN:", localStorage.getItem("token"));
+      
 
       if (res.data.success) {
         setProducts(res.data.products);
