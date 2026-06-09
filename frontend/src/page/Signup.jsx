@@ -46,7 +46,6 @@ function Signup() {
       //   console.log(err.response?.data); // 🔥 real error
       //   handleError(err.response?.data?.message || "Something went wrong")
       // }
-      console.log("FULL ERROR 👉", err.response?.data);
 
       const backendError = err.response?.data;
 
